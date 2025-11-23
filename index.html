@@ -1,1 +1,193 @@
 
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AR1 Flooring — Links</title>
+  <meta name="theme-color" content="#000000" />
+  <style>
+    :root{
+      /* tamaño global de los iconos inferiores */
+      --icon: clamp(60px, 7vw, 100px);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;
+      overflow:hidden;
+      background:#000;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter;
+      -webkit-user-select:none;
+      user-select:none;
+      -webkit-touch-callout:none;
+    }
+
+    /* ===== CAPA 1: FONDO + LOGO ===== */
+    .bg{
+      position:fixed;
+      inset:0;
+      background:url("fondo2.png") center/cover no-repeat;
+      pointer-events:none; /* deja pasar los taps a la HUD */
+    }
+    .bg .logo{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      top:4%;
+      width:86vw;
+      max-width:900px;
+      filter:drop-shadow(0 5px 15px rgba(0,0,0,.35));
+    }
+
+    /* ===== CAPA 2: HUD 9:16 ===== */
+    .hud-wrap{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+    }
+    .hud{
+      position:relative;
+      width:min(100vw, calc(100vh * 9 / 16));
+      height:min(100vh, calc(100vw * 16 / 9));
+      pointer-events:auto;
+    }
+
+    /* utilidades */
+    .el{
+      position:absolute;
+      display:block;
+      filter:drop-shadow(0 5px 15px rgba(0,0,0,.3));
+    }
+
+    /* ===== ELEMENTOS POSICIONADOS (coordenadas en % del HUD) ===== */
+
+    /* “BATHROOM FLOORING • KITCHEN REMODELING …” */
+    .menu-bathroom{
+      left:50%;
+      transform:translateX(-50%);
+      bottom:48%;
+      width:90%;
+    }
+
+    /* “TILE · PORCELAIN · CERAMIC · WOOD · VINYL · LAMINATED · STONE” */
+    .materials{
+      left:50%;
+      transform:translateX(-50%);
+      bottom:36%;
+      width:92%;
+    }
+
+    /* teléfono grande 305-784-0147 */
+    .phone{
+      left:50%;
+      transform:translateX(-50%);
+      bottom:22%;
+      width:88%;
+      animation:floatPulse 2.2s ease-in-out infinite;
+      transform-origin:center;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.5));
+    }
+
+    @keyframes floatPulse{
+      0%{transform:translateX(-50%) translateY(0) scale(1)}
+      50%{transform:translateX(-50%) translateY(-1%) scale(1.03)}
+      100%{transform:translateX(-50%) translateY(0) scale(1)}
+    }
+
+    /* “Call Us Now — Tap the Number” */
+    .callus{
+      left:50%;
+      transform:translateX(-50%);
+      bottom:15%;
+      width:78%;
+    }
+
+    /* iconos de redes + web */
+    .icons{
+      position:absolute;
+      left:8%;
+      right:8%;
+      bottom:7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .icons img{
+      width:var(--icon);
+      height:var(--icon);
+      object-fit:contain;
+      transition:transform .2s ease;
+    }
+    .icons img:hover{
+      transform:scale(1.08);
+    }
+
+    /* “Tap & Follow” */
+    .tap-follow{
+      left:50%;
+      transform:translateX(-50%);
+      bottom:1.8%;
+      width:60%;
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .phone,
+      .icons img{
+        animation:none;
+        transition:none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo + logo -->
+  <div class="bg" aria-hidden="true">
+    <img src="logo.png" alt="AR1 Flooring" class="logo" />
+  </div>
+
+  <!-- HUD 9:16 -->
+  <div class="hud-wrap">
+    <main class="hud" role="main" aria-label="AR1 Flooring links">
+
+      <!-- BATHROOM FLOORING / KITCHEN REMODELING -->
+      <img src="menubathroom.png" alt="Bathroom flooring, kitchen remodeling, professional installation and more" class="el menu-bathroom" />
+
+      <!-- Materiales -->
+      <img src="tile.png" alt="Tile, porcelain, ceramic, wood, vinyl, laminated and stone" class="el materials" />
+
+      <!-- Teléfono -->
+      <a href="tel:+13057840147">
+        <img src="phone.png" alt="Call 305-784-0147" class="el phone" />
+      </a>
+
+      <!-- Call Us Now — Tap the Number -->
+      <a href="tel:+13057840147">
+        <img src="callusnow.png" alt="Call us now – tap the number" class="el callus" />
+      </a>
+
+      <!-- Íconos inferiores -->
+      <nav class="icons" aria-label="Website and social media">
+        <a href="https://ar1flooring.com" target="_blank" rel="noopener">
+          <img src="web.png" alt="Website" />
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61565967095255" target="_blank" rel="noopener">
+          <img src="face.png" alt="Facebook" />
+        </a>
+        <a href="https://www.instagram.com/ar1flooring/" target="_blank" rel="noopener">
+          <img src="inta.png" alt="Instagram" />
+        </a>
+      </nav>
+
+      <!-- Tap & Follow -->
+      <img src="tap-fallow.png" alt="Tap & Follow" class="el tap-follow" />
+
+    </main>
+  </div>
+
+</body>
+</html>
